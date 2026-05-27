@@ -27,20 +27,23 @@ def backup_file(filepath):
     shutil.copy2(filepath, backup_path)
     return backup_path
 
-def safe_replace(content, old, new, filename=""):
-    """安全替换字符串，保留上下文"""
-    if old not in content:
-        return content, False
-    # 只替换字符串内容，不改变代码结构
-    new_content = content.replace(old, new)
-    return new_content, True
+def safe_replace_string_only(content, old, new, filename=""):
+    """只替换引号内的字符串，不替换代码中的变量名"""
+    # 构建正则表达式，只匹配引号内的字符串
+    # 匹配单引号或双引号内的内容
+    pattern = r'(["\'])' + re.escape(old) + r'\1'
+    replacement = r'\1' + new + r'\1'
+    
+    new_content = re.sub(pattern, replacement, content)
+    changed = new_content != content
+    return new_content, changed
 
 def translate_banner_py(filepath):
     """翻译 banner.py"""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # 翻译映射表
+    # 翻译映射表（只翻译引号内的字符串）
     translations = [
         # 版本标签
         ('Hermes Agent v{VERSION}', 'Hermes 智能代理 v{VERSION}'),
@@ -81,7 +84,7 @@ def translate_banner_py(filepath):
     
     changed = 0
     for old, new in translations:
-        content, success = safe_replace(content, old, new, "banner.py")
+        content, success = safe_replace_string_only(content, old, new, "banner.py")
         if success:
             changed += 1
     
@@ -95,7 +98,7 @@ def translate_cli_py(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
-    # 翻译映射表
+    # 翻译映射表（只翻译引号内的字符串）
     translations = [
         # 框架名称
         ('⚕ NOUS HERMES - AI Agent Framework', '⚕ NOUS HERMES - AI 智能代理框架'),
@@ -103,7 +106,6 @@ def translate_cli_py(filepath):
         
         # 工具状态
         ('{tool_count} tools', '{tool_count} 个工具'),
-        ('toolsets:', '工具集:'),
         
         # 欢迎语
         ('Welcome to Hermes Agent! Type your message or /help for commands.', '欢迎使用 Hermes 智能代理！输入消息或 /help 查看命令。'),
@@ -122,7 +124,7 @@ def translate_cli_py(filepath):
         
         # 工具显示
         ('(^_^)/ Available Tools', '(^_^)/ 可用工具'),
-        ('(;_;) No tools available', '(;_;) 没有可用工具'),
+        ('(;_) No tools available', '(;_) 没有可用工具'),
         ('(^_^)b Available Toolsets', '(^_^)b 可用工具集'),
         
         # 命令提示
@@ -130,11 +132,14 @@ def translate_cli_py(filepath):
         ('Unknown command:', '未知命令:'),
         ('Ambiguous command:', '模糊命令:'),
         ('Did you mean:', '你是想输入:'),
+        
+        # 工具集（只替换引号内的字符串）
+        ('toolsets:', '工具集:'),
     ]
     
     changed = 0
     for old, new in translations:
-        content, success = safe_replace(content, old, new, "cli.py")
+        content, success = safe_replace_string_only(content, old, new, "cli.py")
         if success:
             changed += 1
     
