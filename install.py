@@ -8,7 +8,7 @@ import os
 import sys
 import json
 import shutil
-import subprocess
+import re
 from pathlib import Path
 from datetime import datetime
 
@@ -30,11 +30,14 @@ def backup_file(filepath):
 
 def apply_translation(content, old, new):
     """应用翻译，保留变量占位符"""
-    import re
-    # 将 {N} 等变量转为正则表达式
-    pattern = re.escape(old).replace(r'\{N\}', r'(\d+)')
-    replacement = new.replace('{N}', r'\1')
-    return re.sub(pattern, replacement, content)
+    # 只有当原文和译文都包含 {N} 时才用正则
+    if '{N}' in old and '{N}' in new:
+        pattern = re.escape(old).replace(r'\{N\}', r'(\d+)')
+        replacement = new.replace('{N}', r'\1')
+        return re.sub(pattern, replacement, content)
+    else:
+        # 否则直接字符串替换
+        return content.replace(old, new)
 
 def install_translations():
     """安装汉化翻译"""
