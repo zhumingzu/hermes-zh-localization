@@ -5,11 +5,12 @@
 ```
 hermes-zh-localization/
 ├── README.md              # 项目说明
-├── install.py             # 安装脚本
+├── smart_install.py       # 智能安装脚本（推荐）
+├── install.py             # 旧版安装脚本
 ├── uninstall.py           # 卸载脚本
-├── translations.json      # 翻译映射（cli.py, banner.py）
-├── tips_zh.py             # 翻译后的 tips.py（150条提示）
-└── quick_install.sh       # 快速安装脚本
+├── translations.json      # 翻译映射
+├── tips_zh.py             # 翻译后的提示语
+└── USAGE.md               # 本文档
 ```
 
 ## 🚀 在其他电脑上使用
@@ -31,7 +32,7 @@ hermes-zh-localization/
    cd ~
    tar -xzf hermes-zh-localization.tar.gz
    cd hermes-zh-localization
-   python3 install.py
+   python3 smart_install.py
    ```
 
 3. **重启 Hermes**
@@ -42,31 +43,11 @@ hermes-zh-localization/
 
 ### 方法2：使用 Git 仓库
 
-1. **将汉化包推送到 Git 仓库**
+1. **在目标电脑克隆并安装**
    ```bash
-   cd ~/hermes-zh-localization
-   git init
-   git add .
-   git commit -m "Hermes CLI 中文汉化包"
-   git remote add origin https://github.com/yourusername/hermes-zh-localization.git
-   git push -u origin main
-   ```
-
-2. **在目标电脑克隆并安装**
-   ```bash
-   git clone https://github.com/yourusername/hermes-zh-localization.git
+   git clone https://github.com/zhumingzu/hermes-zh-localization.git
    cd hermes-zh-localization
-   python3 install.py
-   ```
-
-### 方法3：使用一键安装脚本
-
-1. **在目标电脑下载并运行**
-   ```bash
-   # 如果汉化包在本地
-   cd ~/hermes-zh-localization
-   chmod +x quick_install.sh
-   ./quick_install.sh
+   python3 smart_install.py
    ```
 
 ## 🔄 升级后重新汉化
@@ -75,7 +56,8 @@ Hermes 升级后，汉化可能被覆盖。重新运行安装脚本即可：
 
 ```bash
 cd ~/hermes-zh-localization
-python3 install.py
+git pull
+python3 smart_install.py
 ```
 
 ## 🗑️ 卸载汉化
@@ -137,7 +119,7 @@ hermes gateway restart
 /reset
 ```
 
-### 问题：汉化后出现乱码
+### 问题：汉化后出现乱码或报错
 ```bash
 # 恢复英文
 cd ~/hermes-zh-localization

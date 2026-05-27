@@ -5,13 +5,41 @@
 ## 快速安装
 
 ```bash
-# 1. 下载或克隆本项目
-# 2. 运行安装脚本
-python install.py
+# 1. 克隆仓库
+git clone https://github.com/zhumingzu/hermes-zh-localization.git
+cd hermes-zh-localization
+
+# 2. 运行智能安装脚本
+python3 smart_install.py
 
 # 3. 重启 Hermes
 hermes gateway restart
 ```
+
+## 文件说明
+
+| 文件 | 用途 |
+|------|------|
+| `smart_install.py` | 智能安装脚本（推荐） |
+| `install.py` | 旧版安装脚本 |
+| `uninstall.py` | 卸载脚本 |
+| `translations.json` | 翻译映射 |
+| `tips_zh.py` | 翻译后的提示语 |
+
+## 智能安装 vs 旧版安装
+
+### 智能安装（推荐） `smart_install.py`
+
+- ✅ 只替换字符串内容，不修改代码结构
+- ✅ 兼容不同版本的 Hermes
+- ✅ 安全可靠，不会破坏代码
+- ✅ 自动检测并翻译当前版本的内容
+
+### 旧版安装 `install.py`
+
+- ⚠️ 会覆盖整个文件
+- ⚠️ 可能与不同版本的 Hermes 不兼容
+- ⚠️ 可能破坏代码结构
 
 ## 支持的汉化内容
 
@@ -26,7 +54,7 @@ hermes gateway restart
 
 ```bash
 # 方法1：使用卸载脚本
-python uninstall.py
+python3 uninstall.py
 
 # 方法2：手动回滚
 cd ~/.hermes/hermes-agent
@@ -38,15 +66,10 @@ git checkout cli.py hermes_cli/banner.py hermes_cli/tips.py
 Hermes 升级后需要重新运行汉化：
 
 ```bash
-python install.py
+cd hermes-zh-localization
+git pull
+python3 smart_install.py
 ```
-
-## 文件说明
-
-- `install.py` - 安装脚本
-- `uninstall.py` - 卸载脚本
-- `translations.json` - 所有翻译映射
-- `README.md` - 本文档
 
 ## 兼容性
 
