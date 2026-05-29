@@ -46,7 +46,7 @@ def translate_banner_py(filepath):
     # 翻译映射表（只翻译引号内的字符串）
     translations = [
         # 版本标签
-        ('Hermes Agent v{VERSION}', 'Hermes 智能代理 v{VERSION}'),
+        ('Hermes Agent v{VERSION}', 'Hermes 智能体 v{VERSION}'),
         
         # 启动界面
         ('Available Tools', '可用工具'),
@@ -101,14 +101,14 @@ def translate_cli_py(filepath):
     # 翻译映射表（只翻译引号内的字符串）
     translations = [
         # 框架名称
-        ('⚕ NOUS HERMES - AI Agent Framework', '⚕ NOUS HERMES - AI 智能代理框架'),
-        ('{agent_name} - AI Agent Framework', '{agent_name} - AI 智能代理框架'),
+        ('⚕ NOUS HERMES - AI Agent Framework', '⚕ NOUS HERMES - AI 智能体框架'),
+        ('{agent_name} - AI Agent Framework', '{agent_name} - AI 智能体框架'),
         
         # 工具状态
         ('{tool_count} tools', '{tool_count} 个工具'),
         
         # 欢迎语
-        ('Welcome to Hermes Agent! Type your message or /help for commands.', '欢迎使用 Hermes 智能代理！输入消息或 /help 查看命令。'),
+        ('Welcome to Hermes Agent! Type your message or /help for commands.', '欢迎使用 Hermes 智能体！输入消息或 /help 查看命令。'),
         
         # 退出语
         ('Goodbye! ⚕', '再见! ⚕'),

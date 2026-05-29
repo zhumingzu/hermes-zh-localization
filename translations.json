@@ -1,10 +1,10 @@
 {
   "cli.py": {
-    "⚕ NOUS HERMES - AI Agent Framework": "⚕ NOUS HERMES - AI 智能代理框架",
-    "{agent_name} - AI Agent Framework": "{agent_name} - AI 智能代理框架",
+    "⚕ NOUS HERMES - AI Agent Framework": "⚕ NOUS HERMES - AI 智能体框架",
+    "{agent_name} - AI Agent Framework": "{agent_name} - AI 智能体框架",
     "{tool_count} tools": "{tool_count} 个工具",
     "toolsets:": "工具集:",
-    "Welcome to Hermes Agent! Type your message or /help for commands.": "欢迎使用 Hermes 智能代理！输入消息或 /help 查看命令。",
+    "Welcome to Hermes Agent! Type your message or /help for commands.": "欢迎使用 Hermes 智能体！输入消息或 /help 查看命令。",
     "Goodbye! ⚕": "再见! ⚕",
     "Resume this session with:": "使用以下命令恢复此会话:",
     "Session:": "会话:",
@@ -22,7 +22,7 @@
     "(^_^)b Available Toolsets": "(^_^)b 可用工具集"
   },
   "hermes_cli/banner.py": {
-    "Hermes Agent v{VERSION}": "Hermes 智能代理 v{VERSION}",
+    "Hermes Agent v{VERSION}": "Hermes 智能体 v{VERSION}",
     "Session: {session_id}": "会话: {session_id}",
     "Available Tools": "可用工具",
     "(and {N} more toolsets...)": "(还有 {N} 个工具集...)",

@@ -77,7 +77,7 @@ hermes gateway restart
 ## 📝 汉化内容
 
 ### 启动界面
-- ✅ 版本标签：Hermes 智能代理 v{x.x.x}
+- ✅ 版本标签：Hermes 智能体 v{x.x.x}
 - ✅ 工具/技能/MCP服务器标题
 - ✅ 会话信息标签
 - ✅ YOLO模式提示
